@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emech Enterprises - Wooden Packaging Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #008754;
+            --secondary-color: #f8a100;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #006741;
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+        }
+        
+        .section-title.text-center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--box-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .nav-toggle {
+            display: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/600') center center/cover;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-img {
+            flex: 1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+        }
+        
+        .clients-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .client-item {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* Quality Section */
+        .quality {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+        
+        .quality-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .quality-img {
+            flex: 1;
+        }
+        
+        .quality-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .quality-text {
+            flex: 1;
+        }
+        
+        .sustainability {
+            margin-top: 40px;
+        }
+        
+        .sustainability h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .sustainability-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .sustainability-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            width: 100px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .sustainability-icon i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        textarea {
+            height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .quality-content {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--dark-color);
+            }
+            
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: white;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                height: auto;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/api/placeholder/150/50" alt="Emech Enterprises Logo">
+                </div>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#clients">Clients</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Excellence in Wooden Packaging Products</h1>
+            <p>With over 20 years of experience, Emech Enterprises efficiently serves the packaging needs of every industry with premium quality wooden packaging solutions.</p>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Emech Enterprises</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Emech Enterprises deals in the Manufacturing and Supplying of Wooden Packing Boxes, Wooden Shipping Pallets, Wooden Cases and Wooden Crates.</p>
+                    <p>We are growing staggeringly in the manufacturing of Wooden Boxes, Wooden Cases, Wooden Crates and Wooden Pallets. Manufactured from premium quality wood, the products offered by us are high in demand.</p>
+                    <p>Durability and strength are the buzzwords that represent the products available with us. These Wooden Products are used for variety of purposes according to their usability like delivering products.</p>
+                    <p>Moreover, we also provide custom-built sizes as per with the drawings of our esteemed customers. Additionally, Wooden Products could be availed at the most competitive prices of the industry.</p>
+                </div>
+                <div class="about-img">
+                    <img src="/api/placeholder/500/400" alt="Wooden Packaging">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title text-center">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Custom Wooden Boxes">
+                    <div class="service-content">
+                        <h3>Custom Wooden Boxes</h3>
+                        <p>We offer custom-built wooden boxes according to the specifications provided by our clients, ensuring maximum protection for your products.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Contract Packaging">
+                    <div class="service-content">
+                        <h3>Contract Packaging</h3>
+                        <p>We provide contract packaging services which is hassle-free and affordable. All contract packaging services are done in a clean, orderly facility staffed by logistics experts.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Barcode Solutions">
+                    <div class="service-content">
+                        <h3>Barcode Solutions</h3>
+                        <p>We are the foremost Manufacturer, Trader, Supplier of premium quality Barcode Labels, Barcode Label Printers, Barcode Scanners, and Thermal Transfer Ribbons.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title text-center">Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="/api/placeholder/400/300" alt="Wooden Pallets">
+                    <div class="product-content">
+                        <h3>Wooden Pallets</h3>
+                        <p>We are specialized in manufacturing a wide range of wooden pallets, available in various sizes, shapes and dimensions and can also be customized as per specifications.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/400/300" alt="Wooden Boxes">
+                    <div class="product-content">
+                        <h3>Wooden Boxes</h3>
+                        <p>We offer a wide range of wooden boxes with sturdy designs which gives exceptional strength. The best quality wood ensures reliability and provides full protection to goods during transit.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/400/300" alt="Wooden Crates">
+                    <div class="product-content">
+                        <h3>Wooden Crates</h3>
+                        <p>Wooden crates offer extra safety for all your priced or valuables for extra protection. Made from high-grade woods, and finely finished with water resistance.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/400/300" alt="Barcode Labels">
+                    <div class="product-content">
+                        <h3>Barcode Labels & Ribbons</h3>
+                        <p>We supply all types of Wax, Wax Resin & Resin Barcode Ribbons and provide sizes as per the customer demand.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/api/placeholder/400/300" alt="Packaging Materials">
+                    <div class="product-content">
+                        <h3>Packaging Materials</h3>
+                        <p>We manufacture and supply Packing Materials like Corrugated Box, Courier Bags, Bubble Films, Stretch Films, Adhesive Tapes, Strap Rolls and Packaging Accessories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section class="quality" id="quality">
+        <div class="container">
+            <h2 class="section-title">Quality Assurance</h2>
+            <div class="quality-content">
+                <div class="quality-text">
+                    <p>Our quality-centric approach has assisted in delivering quality products to customers. Following standards, we manufacture our products from optimum quality raw materials guaranteeing our customers of our credibility.</p>
+                    <p>With the strong support of our well-equipped infra-structural base, we have been successful in delivering flawless products. We are backed by qualified and experienced personnel who anticipate the requirements of customers and thereby furnish them with acme quality products.</p>
+                    <p>We comply with all safety standards and statutory obligations as per requirements.</p>
+
+                    <div class="sustainability">
+                        <h3>Our Sustainability Approach</h3>
+                        <p>Wooden packaging constitutes 80% of the packaging of major goods world over, as most of the pallets are made from wood. Wood is easily convertible, environment-friendly, and not energy-intensive. Our wooden packaging materials are of softwood, hardwood, or a mixture of both.</p>
+                        <div class="sustainability-icons">
+                            <div class="sustainability-icon">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Rethink</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-ban"></i>
+                                <span>Refuse</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-minus-circle"></i>
+                                <span>Reduce</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-recycle"></i>
+                                <span>Reuse</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Repurpose</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-trash-restore"></i>
+                                <span>Recycle</span>
+                            </div>
+                            <div class="sustainability-icon">
+                                <i class="fas fa-tools"></i>
+                                <span>Repair</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quality-img">
+                    <img src="/api/placeholder/500/400" alt="Quality Assurance">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <h2 class="section-title text-center">Our Valuable Clients</h2>
+            <div class="clients-list">
+                <div class="client-item">Avling Solutions & Services</div>
+                <div class="client-item">Gulati Brothers, Noida</div>
+                <div class="client-item">Jandu Engineering Works</div>
+                <div class="client-item">Jaycee Steels Pvt. Ltd.</div>
+                <div class="client-item">Lento Industries Pvt. Ltd.</div>
+                <div class="client-item">Molsieve Design Ltd.</div>
+                <div class="client-item">PBJ Auto Exim Pvt. Ltd.</div>
+                <div class="client-item">PSG Electricals Pvt. Ltd.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Our Locations</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Branch 1:</strong>
+                            <p>165, Garhi Chaukhandi, Sector-121, Behind Noida International Public School Noida, U.P - 201307</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Branch 2:</strong>
+                            <p>D-177, Shyam Park Extension, Sahibabad, Ghaziabad-201005</p>
+                        </div>
+                    </div>
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>Manish Sharma: +91 9717493507</p>
+                            <p>Ramesh Tiwari: +91 8826261954</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>manish@packerprint.com</p>
+                            <p>emceh.enterprises@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <p>www.packerprint.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-id-card"></i>
+                        <div>
+                            <p>GSTIN No. 09BGQPS0282P2ZE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us A Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Emech Enterprises</h4>
+                    <p>With over 20 years of experience in the packing business, we efficiently serve the needs of every industry with premium quality wooden packaging solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Products</h4>
+                    <ul>
+                        <li><a href="#products">Wooden Pallets</a></li>
+                        <li><a href="#products">Wooden Boxes</a></li>
+                        <li><a href="#products">Wooden Crates</a></li>
+                        <li><a href="#products">Barcode Labels</a></li>
+                        <li><a href="#products">Packaging Materials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#clients">Clients</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Made in India</h4>
+                    <p>We are proud to be part of the Make in India initiative, promoting local manufacturing and sustainability.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Emech Enterprises. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Navigation for Mobile
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('nav').classList.toggle('active');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('nav').classList.remove('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fixed header class on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('header').style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                document.querySelector('header').style.background = 'white';
+            }
+        });
+    </script>
+</body>
+</html>
